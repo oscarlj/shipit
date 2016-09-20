@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shipping: 2016-09-20
+  delivery: 2016-09-20
+  company: one
+  office: one
+
+two:
+  shipping: 2016-09-20
+  delivery: 2016-09-20
+  company: two
+  office: two
