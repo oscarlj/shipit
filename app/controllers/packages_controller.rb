@@ -5,7 +5,13 @@ class PackagesController < ApplicationController
   # GET /packages.json
   def index
     @packages = Package.all
+    
+
   end
+
+  
+
+
 
   # GET /packages/1
   # GET /packages/1.json
@@ -15,6 +21,20 @@ class PackagesController < ApplicationController
   # GET /packages/new
   def new
     @package = Package.new
+
+    if params[:search]
+
+    @result = Chilexpress.get_order(params[:search])
+    
+    @package.status = @result.status
+    @package.delivery = @result.receiver.delivery_date  
+   
+
+    @package.company = Company.last
+    @package.office = Office.last
+    @package.save
+
+    end
   end
 
   # GET /packages/1/edit
@@ -24,6 +44,14 @@ class PackagesController < ApplicationController
   # POST /packages
   # POST /packages.json
   def create
+
+ 
+
+
+
+
+
+
     @package = Package.new(package_params)
 
     respond_to do |format|
@@ -69,6 +97,6 @@ class PackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def package_params
-      params.require(:package).permit(:shipping, :delivery, :company_id, :office_id)
+      params.require(:package).permit(:shipping, :delivery, :company_id, :office_id, :status, :search)
     end
 end

@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :company_id %>
-    <%= f.text_field :company_id %>
+    <%= f.select :company_id, Company.all.collect{|c| [c.name, c.id]} %>
   </div>
 
   <div class="field">

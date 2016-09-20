@@ -1,0 +1,9 @@
+<h1>Companies#index</h1>
+
+<%=form_tag packages_path, :method => 'get' do  %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "search" %>
+
+
+
+<% end %>		
