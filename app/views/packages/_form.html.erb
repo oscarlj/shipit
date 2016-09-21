@@ -20,11 +20,17 @@
     <%= f.label :delivery %>
     <%= f.date_select :delivery %>
   </div>
+  
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
 
   <div class="field">
     <%= f.label :company_id %>
     <%= f.select :company_id, Company.all.collect{|c| [c.name, c.id]} %>
   </div>
+   
 
   <div class="field">
     <%= f.label :office_id %>

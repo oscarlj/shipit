@@ -29,9 +29,15 @@ class PackagesController < ApplicationController
     @package.status = @result.status
     @package.delivery = @result.receiver.delivery_date  
    
+     if @package.company == nil  
 
-    @package.company = Company.last
-    @package.office = Office.last
+        @package.company = Company.last
+     end
+
+     if @package.office == nil
+
+        @package.office = Office.last
+     end
     @package.save
 
     end
@@ -77,6 +83,7 @@ class PackagesController < ApplicationController
         format.json { render json: @package.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # DELETE /packages/1
