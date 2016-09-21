@@ -26,6 +26,7 @@
     <%= f.text_field :status %>
   </div>
 
+
   <div class="field">
     <%= f.label :company_id %>
     <%= f.collection_select :company_id, Company.order(:name), :id, :name, include_blank: true %>

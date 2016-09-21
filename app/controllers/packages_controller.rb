@@ -27,7 +27,8 @@ class PackagesController < ApplicationController
     @result = Chilexpress.get_order(params[:search])
     
     @package.status = @result.status
-    @package.delivery = @result.receiver.delivery_date  
+    @package.delivery = @result.receiver.delivery_date 
+     
    
      if @package.company == nil  
 
@@ -83,7 +84,7 @@ class PackagesController < ApplicationController
         format.json { render json: @package.errors, status: :unprocessable_entity }
       end
     end
-    
+
   end
 
   # DELETE /packages/1
@@ -104,6 +105,6 @@ class PackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def package_params
-      params.require(:package).permit(:shipping, :delivery, :company_id, :office_id, :status, :search)
+      params.require(:package).permit(:shipping, :ordernumbre, :delivery, :company_id, :office_id, :status, :search)
     end
 end
