@@ -1,6 +1,7 @@
 class PackagesController < ApplicationController
   before_action :set_package, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
   # GET /packages
   # GET /packages.json
   def index
@@ -29,6 +30,7 @@ class PackagesController < ApplicationController
     @package.status = @result.status
     @package.delivery = @result.receiver.delivery_date 
 
+      @package.order = @result.order_number
    
      if @package.company == nil  
 
@@ -105,6 +107,6 @@ class PackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def package_params
-      params.require(:package).permit(:shipping, :ordernumbre, :delivery, :company_id, :office_id, :status, :search)
+      params.require(:package).permit(:shipping, :order, :delivery, :company_id, :office_id, :status, :search)
     end
 end
