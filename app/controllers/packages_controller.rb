@@ -1,6 +1,6 @@
 class PackagesController < ApplicationController
   before_action :set_package, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /packages
   # GET /packages.json
   def index
@@ -28,7 +28,7 @@ class PackagesController < ApplicationController
     
     @package.status = @result.status
     @package.delivery = @result.receiver.delivery_date 
-     
+
    
      if @package.company == nil  
 
