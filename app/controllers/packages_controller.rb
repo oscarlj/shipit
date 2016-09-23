@@ -25,25 +25,31 @@ class PackagesController < ApplicationController
 
     if params[:search]
 
-    @result = Chilexpress.get_order(params[:search])
-    
-    @package.status = @result.status
-    @package.delivery = @result.receiver.delivery_date 
+        result = Chilexpress.get_order(params[:search])
+        
+        @package.status = result.status
+        @package.delivery = result.receiver.delivery_date 
 
-      @package.order = @result.order_number
-   
-     if @package.company == nil  
+        @package.order = result.order_number
+       
+        if @package.company == nil  
 
-        @package.company = Company.last
-     end
+            @package.company = Company.last
+        end
 
-     if @package.office == nil
+        if @package.office == nil
 
-        @package.office = Office.last
-     end
-    @package.save
+            @package.office = Office.last
+        end
+        @package.save
+
+    else
+      @package.order_n
+      
 
     end
+
+
   end
 
   # GET /packages/1/edit

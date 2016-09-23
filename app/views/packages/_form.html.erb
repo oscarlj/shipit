@@ -28,8 +28,10 @@
 
 
   <div class="field">
+    <% if params[:search] %>
     <%= f.label :order %>
     <%= f.text_field :order %>
+    <% end %>
   </div>
 
 
