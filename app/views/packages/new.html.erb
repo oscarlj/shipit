@@ -1,10 +1,14 @@
 <h1>New Package</h1>
-Ingresa numero de orden
+<p>Ingresa numero de orden, si no tienes se generara uno automatico
+</p>
+
+<p>	
 <%=form_tag new_package_path, :method => 'get' do  %>
       <%= text_field_tag :search, params[:search] %>
       <%= submit_tag "search" %>
       <% end %>
-
+</p>
+<hr>
 <%= render 'form', package: @package %>
 
 <%= link_to 'Back', packages_path %>
